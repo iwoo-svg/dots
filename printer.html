@@ -1,57 +1,65 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dot Matrix Printer — Letters Made of Dots</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dot Matrix Printer — Discrete</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+<body class="system">
+  <div class="frame">
 
-<body>
+    <header class="site-header">
+      <a class="logo" href="index.html">Di    scr      ete</a>
+      <p class="sub">Archive  of  Encoded  Information</p>
+      <p class="count">05  Systems</p>
+    </header>
 
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-    </nav>
-  </header>
+    <figure class="hero reveal"><img src="images/dotmatrix-hero.png" alt="Dot matrix printer"></figure>
 
-  <main>
-    <h1>Dot Matrix Printer</h1>
-    <p>1968 — Print</p>
+    <div class="title-row reveal">
+      <p class="num">003</p>
+      <p class="name">Dot Matrix Printer</p>
+      <p class="meta">1960s–1970s</p>
+      <p class="tag">Constructing Letters from Dots</p>
+    </div>
 
-    <h2>Letters Made of Ink</h2>
-    <p>
-      Dot matrix printers create letters by striking
-      an ink ribbon with small pins.
-      Individual dots form characters on paper,
-      often using a 5 × 7 matrix.
-    </p>
-
-    <section>
-      <h2>Visual</h2>
-      <pre>
-
-      </pre>
+    <section class="col sec s-overview reveal">
+      <h3>01 .  Overview</h3>
+      <p class="lead">1960s–1970s / Impact Printing / Ink &amp; Paper</p>
+      <p>A printing technology that constructs letters and images from individual ink dots, transforming digital instructions into physical marks.</p>
     </section>
 
-    <section>
-      <h2>Connections</h2>
-      <p>
-        Dot matrix printing and the Game Boy
-        both construct characters from grids
-        of discrete visual units.
-      </p>
-      <a href="gameboy.html">Explore Game Boy</a>
+    <section class="col sec s-origin reveal">
+      <h3>02 .  Origin</h3>
+      <p>Dot matrix printing emerged as computers required flexible ways to print text and graphics. Pin-based impact printers became widely used during the 1970s and 1980s, offering an alternative to printers with fixed character shapes.</p>
     </section>
-  </main>
 
-  <footer>
-    <nav>
-      <a href="morse.html">Previous: Morse Code</a>
-      <a href="index.html">Index</a>
-      <a href="gameboy.html">Next: Game Boy</a>
-    </nav>
-  </footer>
+    <section class="col sec s-mechanism reveal">
+      <h3>03 .  Mechanism</h3>
+      <p class="mech-sub">From Dots to Characters</p><p>A printhead uses small metal pins to strike an ink ribbon against paper. As the head moves, individual dots form letters and images within a grid, commonly using 5 × 7 or 9 × 9 character matrices.</p>
+    </section>
 
+    <section class="col sec s-interact reveal">
+      <h3>04 .  Interaction</h3>
+    </section>
+    <div class="matrix reveal" aria-label="5 by 7 dot matrix"></div>
+    <div class="pills matrix-pills reveal"><button class="pill" data-ch="A">A</button><button class="pill" data-ch="B">B</button><button class="pill" data-ch="C">C</button></div>
+
+    <section class="col sec s-connect reveal">
+      <h3>05 .  Connections</h3>
+      <p class="lbl">Explore Related Systems</p>
+      <ul class="dots">
+        <li><a href="braille.html">Braille</a>: Touch → Vision</li><li><a href="punched.html">Punched Card</a>: Adding Ink → Removing Material</li><li><a href="qr.html">QR Code</a>: Human-Readable → Machine-Readable</li>
+      </ul>
+    </section>
+
+    <div class="refs caps reveal">
+      <h4>Reference</h4>
+      <a href="https://www.britannica.com/technology/computer-printer" target="_blank" rel="noopener">Encyclopaedia Britannica — Computer Printer</a><a href="https://computerhistory.org/" target="_blank" rel="noopener">Computer History Museum</a><a href="https://www.epson.com/" target="_blank" rel="noopener">Epson — Official Website</a>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

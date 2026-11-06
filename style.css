@@ -1,0 +1,326 @@
+/* ==========================================================
+   DISCRETE — Archive of Encoded Information
+   Desktop frame: 1440px (Figma). The whole frame is scaled to
+   the window width with `zoom` (set in script.js as --s).
+   ========================================================== */
+
+@font-face {
+  font-family: "Haas";
+  src: local("Haas Grot Disp Trial 55 Roman"), local("HaasGrotDispTrial-55Roman"),
+       local("Neue Haas Grotesk Display Pro 55 Roman"), local("NHaasGroteskDSPro-55Rg"),
+       url("fonts/HaasGrotDisp-55Roman.woff2") format("woff2"),
+       url("fonts/HaasGrotDisp-55Roman.woff") format("woff"),
+       url("fonts/HaasGrotDisp-55Roman.otf") format("opentype"),
+       url("fonts/HaasGrotDisp-55Roman.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --bg: #eae9e3;
+  --ink: #3a3a3a;
+  --mute: #636363;
+  --dot: #d0cec2;
+  --s: 1;                               /* window width / 1440, set by JS */
+  --ease: cubic-bezier(.22, 1, .36, 1);  /* soft ease-out used everywhere */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { background: var(--bg); }
+
+body {
+  font-family: "Haas", "Neue Haas Grotesk Display Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  opacity: 0;
+  transition: opacity .7s var(--ease);
+}
+body.is-ready { opacity: 1; }
+body.is-leaving { opacity: 0; transition-duration: .45s; }
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+.frame {
+  position: relative;
+  width: 1440px;
+  zoom: var(--s);
+}
+
+.caps { font-size: 14px; letter-spacing: 4.2px; text-transform: uppercase; }
+
+/* ---------- Header (Group 6) ---------- */
+.site-header {
+  position: absolute;
+  left: 32px;
+  width: 1369px;
+  height: 43px;
+  z-index: 5;
+  white-space: pre;
+  pointer-events: none;
+}
+.site-header > * { pointer-events: auto; }
+.site-header .logo { position: absolute; left: 0; top: 0; font-size: 36px; line-height: 43px; }
+.site-header .sub  { position: absolute; left: 592px; top: 10px; font-size: 14px; }
+.site-header .count{ position: absolute; right: 0; top: 10px; font-size: 14px; }
+
+/* ==========================================================
+   LANDING
+   ========================================================== */
+.landing { overflow: hidden; }
+.landing .frame { width: 100vw; height: 100vh; zoom: 1; overflow: hidden; }
+
+/* every layer = the 1440px design, scaled to the window width.
+   bg + panels hang from the window's vertical middle, so they stay centred at any size */
+.landing .layer { position: absolute; left: 0; width: 1440px; transform-origin: 0 0; transform: scale(var(--s)); }
+.landing .bg-layer    { top: 50%; height: 0; z-index: 1; mix-blend-mode: color-burn; }
+.landing .strip-layer { top: 0; height: calc(100vh / var(--s)); z-index: 2; mix-blend-mode: multiply; }
+.landing .top-layer   { top: 0; height: 0; z-index: 5; }
+.landing .mid-layer   { top: 50%; height: 0; z-index: 6; }
+.landing .site-header { top: 36px; }
+
+/* big background image that appears on hover */
+.bg-stage {
+  position: absolute;
+  left: 334px;
+  top: -293.5px;
+  width: 771px;
+  height: 587px;
+  pointer-events: none;
+}
+.bg-stage img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+.bg-stage img.on { opacity: 1; }
+/* QR photo: the code sits low in the image, so shift it to the centre */
+.bg-stage img[data-key="qr"] { object-position: 50% 64.4%; }
+
+/* vertical image strip */
+.strip {
+  position: absolute;
+  left: 652px; top: 0;
+  width: 136px; height: 100%;
+}
+.strip-track { position: absolute; left: 0; top: 0; width: 136px; will-change: transform; }
+.strip a {
+  position: absolute; left: 0;
+  width: 136px;
+  overflow: hidden;
+  mix-blend-mode: multiply;
+  display: block;
+}
+.strip a img {
+  position: absolute; left: 0; top: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .9s var(--ease), filter .6s var(--ease);
+}
+.strip a.crop-qr img { height: 200.61%; top: -59.59%; object-fit: fill; }
+.strip a:hover img { transform: scale(1.06); }
+.strip.has-hover a:not(:hover) img { filter: grayscale(1) contrast(.85) brightness(1.08); }
+
+/* index / about tabs and panels */
+.panel {
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 25px;
+  background: var(--ink);
+  color: var(--bg);
+  overflow: hidden;
+  transition: width .9s var(--ease), height .9s var(--ease);
+}
+.panel.left  { left: 0; }
+.panel.right { right: 0; }
+.panel.open  { width: 542px; height: calc(50vh / var(--s) + 2px); }
+
+.panel-tab {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 25px;
+  display: block;
+  text-align: left;
+  color: var(--bg);
+}
+.panel-tab .caps { position: absolute; top: 4px; line-height: 17px; }
+.panel.open .panel-tab .caps { top: 16px; }
+.panel.left  .panel-tab .caps { left: 12px; }
+.panel.right .panel-tab .caps { right: 11px; }
+.burger { position: absolute; top: 8px; right: 6px; width: 24px; height: 9px; }
+.panel.open .burger { top: 20px; }
+.panel.left.open .burger { right: 17px; }
+.burger i { position: absolute; left: 0; width: 24px; height: 1px; background: var(--bg); }
+.burger i:nth-child(1) { top: 0; } .burger i:nth-child(2) { top: 4px; } .burger i:nth-child(3) { top: 8px; }
+.panel.open .burger i:nth-child(1) { top: 4px; transform: rotate(45deg); }
+.panel.open .burger i:nth-child(2) { transform: scaleX(0); }
+.panel.open .burger i:nth-child(3) { top: 4px; transform: rotate(-45deg); }
+
+.panel-body { position: absolute; top: 67px; left: 0; width: 542px; }
+.panel-body > * {
+  visibility: hidden;
+}
+.panel.open .panel-body > * { visibility: visible; }
+
+.index-list a {
+  display: flex; justify-content: space-between;
+  height: 47px;
+  padding: 0 41px 0 16px;
+  line-height: 17px;
+}
+.index-list:hover a span:last-child { opacity: .45; }
+.index-list a:hover span:last-child { opacity: 1; }
+
+.about-text { width: 302px; margin-left: 27px; font-size: 14px; line-height: 19px; }
+.about-text p { margin-bottom: 38px; }
+.about-text p:first-child { margin-bottom: 47px; }
+
+/* ==========================================================
+   SYSTEM DETAIL PAGES
+   ========================================================== */
+.system .frame { height: 3570px; }
+.system .site-header { top: 45px; }
+
+.hero {
+  position: absolute;
+  left: 63px; top: 217px;
+  width: 399px; height: 263px;
+  overflow: hidden;
+}
+.hero.square { width: 356px; height: 356px; }
+.hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; }
+.hero img.crop-qr { height: 200.61%; top: -63.08%; object-fit: fill; }
+
+.col { position: absolute; left: 688px; }
+
+.title-row { position: absolute; left: 684px; top: 720px; width: 717px; height: 73px; }
+.title-row .num  { position: absolute; left: 0; top: 0; font-size: 32px; letter-spacing: 9.6px; }
+.title-row .name { position: absolute; left: 111px; top: 0; font-size: 32px; }
+.title-row .meta { position: absolute; right: 0; top: 10px; font-size: 15px; }
+.title-row .tag  { position: absolute; left: 3px; top: 55px; font-size: 15px; }
+
+.sec h3 { font-size: 20px; font-weight: 400; white-space: pre; margin-bottom: 44px; }
+.sec p  { font-size: 15px; line-height: 18px; }
+.sec .lead { margin-bottom: 18px; }
+.sec .mech-sub { margin-bottom: 0; }
+
+.s-overview  { top: 925px;  width: 625px; }
+.s-overview h3 { margin-bottom: 36px; }
+.s-origin    { top: 1188px; width: 685px; }
+.s-mechanism { top: 1445px; width: 685px; }
+.s-interact  { top: 1684px; width: 685px; }
+.s-connect   { top: 2595px; width: 685px; }
+.s-connect h3 { margin-bottom: 24px; }
+.s-connect .lbl { font-size: 16px; margin-bottom: 38px; }
+.s-connect ul { list-style: none; font-size: 16px; line-height: 19px; }
+.s-connect ul.dots li::before { content: "•"; display: inline-block; width: 12px; margin-left: 4px; }
+.s-connect a { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .6s var(--ease); }
+.s-connect a:hover { background-size: 100% 1px; }
+
+.refs { position: absolute; left: 700px; top: 3376px; width: 641px; color: #000; }
+.refs h4 { font-weight: 400; height: 38px; }
+.refs a { display: block; text-decoration: underline; text-underline-position: from-font; line-height: 17px; }
+.refs a:hover { text-decoration-thickness: 2px; }
+
+/* pill buttons (A / B / C) */
+.pills { position: absolute; display: flex; gap: 19px; }
+.pill {
+  width: 91px; height: 28px;
+  border: .5px solid var(--ink);
+  border-radius: 14px;
+  color: var(--mute);
+  font-size: 16px;
+  transition: background .5s var(--ease), color .5s var(--ease);
+}
+.pill:hover { background: rgba(58,58,58,.08); }
+.pill.on { background: var(--ink); color: var(--bg); }
+
+/* Braille cell (Frame 3: 136 × 205) */
+.braille-cell {
+  position: absolute; left: 926px; top: 1791px;
+  width: 136px; height: 205px;
+  display: grid;
+  grid-template-columns: 52px 52px;
+  grid-template-rows: repeat(3, 52px);
+  column-gap: 32px; row-gap: 24.5px;
+  grid-auto-flow: column;   /* fills 1,2,3 down then 4,5,6 */
+}
+.braille-cell i {
+  border-radius: 50%;
+  background: var(--bg);
+  box-shadow: inset 3px 3px 6px #d6d4c9, inset -3px -3px 6px #ffffff;
+  transition: box-shadow .8s var(--ease), transform .8s var(--ease), background .8s var(--ease);
+}
+.braille-cell i.up {
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f3f2ee 45%, #e2e0d8 100%);
+  box-shadow: 9px 11px 18px #cfcdc2, -8px -8px 16px #ffffff;
+  transform: translateY(-2px) scale(1.04);
+}
+.braille-pills { left: 838px; top: 2071px; }
+
+/* Dot matrix (5 × 7) */
+.matrix {
+  position: absolute; left: 877px; top: 1786px;
+  display: grid;
+  grid-template-columns: repeat(5, 31.2px);
+  grid-auto-rows: 31.43px;
+  column-gap: 15px; row-gap: 15px;
+}
+.matrix i { border-radius: 22.29px; background: var(--dot); transition: background .35s var(--ease), transform .35s var(--ease); }
+.matrix i.ink { background: var(--mute); }
+.matrix i.hit { transform: scale(.82); }
+.matrix-pills { left: 829px; top: 2157px; }
+
+/* Morse box */
+.morse-box {
+  position: absolute; left: 668px; top: 1735px;
+  width: 705px; height: 349px;
+  border-radius: 33px;
+  background: var(--bg);
+  box-shadow: inset -18px -18px 30px rgba(255,255,255,.62), inset 18px 18px 30px #d0cec2;
+}
+.morse-box label, .morse-box .out-lbl { position: absolute; left: 42px; color: var(--mute); }
+.morse-box label { top: 35px; }
+.morse-box .out-lbl { top: 136px; }
+.morse-box input {
+  position: absolute; left: 42px; top: 66px;
+  width: 621px; height: 28px;
+  border: .5px solid var(--ink);
+  border-radius: 14px;
+  background: transparent;
+  padding: 0 14px;
+  font: inherit; font-size: 15px; color: var(--ink);
+  outline: none;
+  transition: box-shadow .4s var(--ease);
+}
+.morse-box input:focus { box-shadow: 0 0 0 3px rgba(58,58,58,.08); }
+.morse-out {
+  position: absolute; left: 42px; top: 170px;
+  width: 621px; height: 150px;
+  overflow-y: auto;
+  display: flex; flex-wrap: wrap; align-content: flex-start;
+  gap: 10px 22px;
+}
+.morse-out .ch { display: flex; flex-direction: column; gap: 8px; }
+.morse-out .sig { display: flex; gap: 5px; height: 8px; align-items: center; }
+.morse-out .sig b {
+  display: block; height: 8px; border-radius: 4px; background: var(--ink);
+  animation: sigIn .5s var(--ease) both;
+}
+.morse-out .sig b.dot  { width: 8px; }
+.morse-out .sig b.dash { width: 24px; }
+.morse-out .ch small { font-size: 11px; letter-spacing: 2px; color: var(--mute); text-transform: uppercase; }
+.morse-out .gap { width: 14px; }
+.morse-out .hint { font-size: 14px; color: #9a988f; letter-spacing: 1px; }
+@keyframes sigIn { from { opacity: 0; transform: scaleX(.2); } to { opacity: 1; transform: none; } }
+
+/* scroll reveal */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 1.1s var(--ease), transform 1.3s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
+  .reveal { opacity: 1; transform: none; }
+}

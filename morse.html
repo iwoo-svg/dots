@@ -1,56 +1,69 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Morse Code — Letters Made of Dots</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Morse Code — Discrete</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+<body class="system">
+  <div class="frame">
 
-<body>
+    <header class="site-header">
+      <a class="logo" href="index.html">Di    scr      ete</a>
+      <p class="sub">Archive  of  Encoded  Information</p>
+      <p class="count">05  Systems</p>
+    </header>
 
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-    </nav>
-  </header>
+    <figure class="hero reveal"><img src="images/morse-hero.png" alt="Morse telegraph key"></figure>
 
-  <main>
-    <h1>Morse Code</h1>
-    <p>1844 — Sound</p>
+    <div class="title-row reveal">
+      <p class="num">002</p>
+      <p class="name">Morse Code</p>
+      <p class="meta">1830—UNITED STATES</p>
+      <p class="tag">Language Through Time</p>
+    </div>
 
-    <h2>Letters Made of Signals</h2>
-    <p>
-      Morse code represents letters and numbers
-      through sequences of dots and dashes.
-      Unlike Braille, its dots are signals that
-      unfold over time.
-    </p>
-
-    <section>
-      <h2>Visual</h2>
-      <p>... --- ...</p>
-      <p>SOS</p>
+    <section class="col sec s-overview reveal">
+      <h3>01 .  Overview</h3>
+      <p class="lead">1830s–1840s / United States / Samuel Morse &amp; Alfred Vail</p>
+      <p>A communication system that transforms letters into sequences of short and long signals, allowing information to travel across distances.</p>
     </section>
 
-    <section>
-      <h2>Connections</h2>
-      <p>
-        Both Morse code and Braille translate
-        written language into alternative
-        forms of communication.
-      </p>
-      <a href="braille.html">Explore Braille</a>
+    <section class="col sec s-origin reveal">
+      <h3>02 .  Origin</h3>
+      <p>Developed alongside the electrical telegraph in the 1830s and 1840s, Morse code enabled messages to be transmitted through electrical signals. In 1844, Morse demonstrated long-distance telegraph communication between Washington, D.C., and Baltimore.</p>
     </section>
-  </main>
 
-  <footer>
-    <nav>
-      <a href="braille.html">Previous: Braille</a>
-      <a href="index.html">Index</a>
-      <a href="printer.html">Next: Dot Matrix Printer</a>
-    </nav>
-  </footer>
+    <section class="col sec s-mechanism reveal">
+      <h3>03 .  Mechanism</h3>
+      <p class="mech-sub">Dots, Dashes, and Duration</p><p>Each character is represented by a sequence of dots (short signals) and dashes (long signals). The timing and pauses between signals determine how a message is interpreted.</p>
+    </section>
 
+    <section class="col sec s-interact reveal">
+      <h3>04 .  Interaction</h3>
+    </section>
+    <div class="morse-box reveal">
+      <label class="caps" for="morseIn">message input</label>
+      <input id="morseIn" type="text" maxlength="60" autocomplete="off" spellcheck="false">
+      <p class="out-lbl caps">MORSE OUTPUT</p>
+      <div class="morse-out" id="morseOut" aria-live="polite"></div>
+    </div>
+
+    <section class="col sec s-connect reveal">
+      <h3>05 .  Connections</h3>
+      <p class="lbl">Explore Related Systems</p>
+      <ul>
+        <li><a href="braille.html">Braille</a>: Time → Space</li><li><a href="printer.html">Dot Matrix</a>: Signal → Physical Mark</li><li><a href="punched.html">Punched Card</a>: Sequence → Position</li>
+      </ul>
+    </section>
+
+    <div class="refs caps reveal">
+      <h4>Reference</h4>
+      <a href="https://www.britannica.com/topic/Morse-Code" target="_blank" rel="noopener">Encyclopaedia Britannica — Morse Code</a><a href="https://www.loc.gov/collections/samuel-morse-papers/about-this-collection/" target="_blank" rel="noopener">Library of Congress — Samuel F. B. Morse Papers</a><a href="https://www.itu.int/rec/R-REC-M.1677/en" target="_blank" rel="noopener">International Telecommunication Union — International Morse Code</a>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

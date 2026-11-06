@@ -1,48 +1,69 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Letters Made of Dots</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Discrete — Archive of Encoded Information</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+<body class="landing">
+  <div class="frame">
 
-<body>
+    <!-- each layer is the 1440px design scaled to the window; centre layers sit on the window's middle -->
+    <div class="layer bg-layer">
+      <div class="bg-stage" aria-hidden="true">
+      <img data-key="braille"   src="images/braille.png"   alt="">
+      <img data-key="morse"     src="images/morse.png"     alt="">
+      <img data-key="dotmatrix" src="images/dotmatrix.png" alt="">
+      <img data-key="punched"   src="images/punched.png"   alt="">
+      <img data-key="qr"        src="images/qr.png"        alt="">
+    </div>
+    </div>
 
-  <header>
-    <h1>Letters Made of Dots</h1>
-    <p>An archive of communication systems built from dots.</p>
-  </header>
+    <div class="layer strip-layer">
+      <!-- vertical strip: filled by script.js, scroll to move it -->
+      <div class="strip" id="strip"><div class="strip-track" id="stripTrack"></div></div>
+    </div>
 
-  <main>
-    <section>
-      <h2>About</h2>
-      <p>
-        From tactile Braille to machine-readable QR codes,
-        this catalogue explores how dots construct language
-        through touch, sound, ink, light, and data.
-      </p>
-    </section>
+    <div class="layer top-layer">
+      <header class="site-header">
+      <a class="logo" href="index.html">Di    scr      ete</a>
+      <p class="sub">Archive  of  Encoded  Information</p>
+      <p class="count">05  Systems</p>
+    </header>
+    </div>
 
-    <section>
-      <h2>Explore the Archive</h2>
-
-      <nav aria-label="Catalogue">
-        <ul>
-          <li><a href="braille.html">01 — Braille (1829)</a></li>
-          <li><a href="morse.html">02 — Morse Code (1844)</a></li>
-          <li><a href="printer.html">03 — Dot Matrix Printer (1968)</a></li>
-          <li><a href="gameboy.html">04 — Game Boy (1989)</a></li>
-          <li><a href="qr.html">05 — QR Code (1994)</a></li>
-        </ul>
+    <div class="layer mid-layer">
+      <!-- INDEX -->
+    <div class="panel left" id="indexPanel">
+      <button class="panel-tab" data-toggle="indexPanel" aria-expanded="false">
+        <span class="caps">index</span>
+        <span class="burger"><i></i><i></i><i></i></span>
+      </button>
+      <nav class="panel-body index-list caps">
+        <a href="braille.html"   data-key="braille"><span>001</span><span>Braille</span></a>
+        <a href="morse.html"     data-key="morse"><span>002</span><span>Morse Code</span></a>
+        <a href="printer.html" data-key="dotmatrix"><span>003</span><span>Dot Matrix Printer</span></a>
+        <a href="punched.html"   data-key="punched"><span>004</span><span>Punched Card</span></a>
+        <a href="qr.html"        data-key="qr"><span>005</span><span>QR Code</span></a>
       </nav>
+    </div>
 
-    </section>
-  </main>
+    <!-- ABOUT -->
+    <div class="panel right" id="aboutPanel">
+      <button class="panel-tab" data-toggle="aboutPanel" aria-expanded="false">
+        <span class="caps">About</span>
+      </button>
+      <div class="panel-body about-text">
+        <p>How does a simple mark become information?</p>
+        <p>DISCRETE is a digital archive examining five systems that transform individual units into meaningful patterns: Braille, Morse code, dot matrix printing, punched cards, and QR codes.</p>
+        <p>Each system uses a different medium, yet all rely on the arrangement, sequence, presence, or absence of simple elements.</p>
+        <p>Through these five systems, the archive explores how information is encoded, transmitted, recorded, and interpreted by humans and machines.</p>
+      </div>
+    </div>
+    </div>
 
-  <footer>
-    <p>Letters Made of Dots — 2026</p>
-  </footer>
-
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
