@@ -117,6 +117,8 @@
 
     // eased infinite scroll of the strip (+ a very slow drift)
     let target = 0, pos = 0, hovering = false;
+    try { const saved = parseFloat(sessionStorage.getItem("stripPos")); if (!isNaN(saved)) target = pos = saved; } catch (_) {}
+    addEventListener("pagehide", () => { try { sessionStorage.setItem("stripPos", target); } catch (_) {} });
     addEventListener("wheel", e => {
       if (e.ctrlKey) return;
       e.preventDefault();
@@ -407,4 +409,46 @@
       btn.setAttribute("aria-expanded", open);
     });
   });
+
+  /* detail pages: small strip of all five systems + hover previews on the main image */
+  const PAGES = {
+    "braille.html": ["images/braille-1.png", "Braille"],
+    "morse.html": ["images/morse-hero.png", "Morse Code"],
+    "printer.html": ["images/dotmatrix-hero.png", "Dot Matrix Printer"],
+    "punched.html": ["images/punched-hero.png", "Punched Card"],
+    "qr.html": ["images/qr-hero.png", "QR Code"],
+  };
+  const here = location.pathname.split("/").pop();
+  const hero = document.querySelector(".hero");
+  if (document.body.classList.contains("minimal")) {
+    const layer = document.createElement("div");
+    layer.className = "mini-layer";
+    const nav = document.createElement("nav");
+    nav.className = "mini-strip";
+    nav.setAttribute("aria-label", "Systems");
+    Object.entries(PAGES).forEach(([href, [src, name]]) => {
+      const a = document.createElement("a");
+      a.href = href; a.title = name;
+      if (href === here) { a.className = "current"; a.setAttribute("aria-current", "page"); }
+      a.innerHTML = `<img src="${src}" alt="${name}"${href === "qr.html" ? ' class="qr-pos"' : ""}>`;
+      nav.appendChild(a);
+    });
+    layer.appendChild(nav);
+    document.body.appendChild(layer);
+  }
+  if (hero) {
+    const pv = document.createElement("img");
+    pv.className = "hero-preview"; pv.alt = "";
+    hero.appendChild(pv);
+    document.querySelectorAll(".mini-strip a").forEach(a => {
+      const href = a.getAttribute("href");
+      if (!PAGES[href] || href === here) return;
+      a.addEventListener("mouseenter", () => {
+        pv.src = PAGES[href][0];
+        pv.classList.toggle("qr-pos", href === "qr.html");
+        hero.classList.add("previewing");
+      });
+      a.addEventListener("mouseleave", () => hero.classList.remove("previewing"));
+    });
+  }
 })();

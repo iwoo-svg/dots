@@ -9,7 +9,7 @@
 <body class="landing">
   <div class="frame">
 
-    <!-- each layer is the 1440px design scaled to the window; centre layers sit on the window's middle -->
+
     <div class="layer bg-layer">
       <div class="bg-stage" aria-hidden="true">
       <img data-key="braille"   src="images/braille-1.png" alt="">
@@ -21,7 +21,6 @@
     </div>
 
     <div class="layer strip-layer">
-      <!-- vertical strip: filled by script.js, scroll to move it -->
       <div class="strip" id="strip"><div class="strip-track" id="stripTrack"></div></div>
     </div>
 
@@ -37,10 +36,11 @@
       <!-- INDEX -->
     <div class="panel left" id="indexPanel">
       <button class="panel-tab" data-toggle="indexPanel" aria-expanded="false">
-        <span class="caps">index</span>
+        <span class="caps">Index</span>
         <span class="burger"><i></i><i></i><i></i></span>
       </button>
       <nav class="panel-body index-list caps">
+        <a href="index.html" aria-current="page"><span>000</span><span>Archive</span></a>
         <a href="braille.html"   data-key="braille"><span>001</span><span>Braille</span></a>
         <a href="morse.html"     data-key="morse"><span>002</span><span>Morse Code</span></a>
         <a href="printer.html" data-key="dotmatrix"><span>003</span><span>Dot Matrix Printer</span></a>
