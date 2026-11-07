@@ -6,7 +6,7 @@
   <title>Braille — Discrete</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="system">
+<body class="system minimal" style="--hero-h: 356px">
   <div class="frame">
 
     <header class="site-header">
@@ -15,50 +15,84 @@
       <p class="count">05  Systems</p>
     </header>
 
-    <figure class="hero reveal"><img src="images/braille-hero.png" alt="Braille"></figure>
+    <figure class="hero hero-braille"><img src="images/braille-1.png" alt="Braille"></figure>
 
-    <div class="title-row reveal">
-      <p class="num">001</p>
-      <p class="name">Braille</p>
-      <p class="meta">1829 — FRANCE</p>
-      <p class="tag">Reading Through Touch</p>
+    
+
+    <!-- minimal info block (ip-che style): one type size, numbered rows, click to open -->
+    <div class="info">
+      <div class="info-head"><span>Braille</span><span>Louis Braille</span><span>1829</span></div>
+
+      <div class="row open">
+        <button class="row-btn" aria-expanded="true"><span>01</span><span>Overview</span><span></span></button>
+        <div class="row-body">
+          <p>1829 / France / Louis Braille</p>
+          <p>Reading Through Touch. A tactile writing system that transforms language into patterns of raised dots, allowing people to read through touch.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-btn static"><span>02</span><span>Category</span><span class="sub"><span>02.1</span><span>Touch</span></span></div>
+      </div>
+
+      <div class="row">
+        <button class="row-btn" aria-expanded="false"><span>03</span><span>Origin</span><span></span></button>
+        <div class="row-body">
+          <p>Developed by Louis Braille in the 1820s, the system was inspired by Charles Barbier&#x27;s earlier raised-dot writing method. Braille simplified it into a six-dot cell and published his system in 1829.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <button class="row-btn" aria-expanded="false"><span>04</span><span>Mechanism</span><span></span></button>
+        <div class="row-body">
+          <p>2 × 3 grid. Different combinations of raised dots represent letters, numbers, and symbols.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <button class="row-btn" aria-expanded="false"><span>05</span><span>Interaction</span><span></span></button>
+        <div class="row-body">
+          <div class="braille-cell" aria-label="Braille cell"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="pills braille-pills"><button class="pill" data-ch="A">A</button><button class="pill" data-ch="B">B</button><button class="pill" data-ch="C">C</button><button class="pill" data-ch="D">D</button><button class="pill" data-ch="E">E</button></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <button class="row-btn" aria-expanded="false"><span>06</span><span>Reference</span><span></span></button>
+        <div class="row-body">
+          <ul class="plain">
+            <li><a href="https://www.loc.gov/exhibits/louis-braille/overview.html" target="_blank" rel="noopener">Library of Congress — Louis Braille: His Legacy and Influence</a></li>
+            <li><a href="https://www.brailleauthority.org/" target="_blank" rel="noopener">Braille Authority of North America</a></li>
+            <li><a href="https://www.perkins.org/" target="_blank" rel="noopener">Perkins School for the Blind</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <section class="col sec s-overview reveal">
-      <h3>01 .  Overview</h3>
-      <p class="lead">1829 / France / Louis Braille</p>
-      <p>A tactile writing system that transforms language into patterns of raised dots, allowing people to read through touch.</p>
-    </section>
+    <!-- related systems: links to the other pages, sits at the bottom of the page -->
+    <nav class="related" aria-label="Related systems">
+      <div class="rel-head"><span>Related Systems</span></div>
+      <a class="rel-row" href="morse.html"><span>002</span><span>Morse Code</span><span>Space → Time</span></a>
+      <a class="rel-row" href="printer.html"><span>003</span><span>Dot Matrix</span><span>Touch → Vision</span></a>
+      <a class="rel-row" href="qr.html"><span>005</span><span>QR Code</span><span>Human → Machine</span></a>
+    </nav>
 
-    <section class="col sec s-origin reveal">
-      <h3>02 .  Origin</h3>
-      <p>Developed by Louis Braille in the 1820s, the system was inspired by Charles Barbier&#x27;s earlier raised-dot writing method. Braille simplified it into a six-dot cell and published his system in 1829.</p>
-    </section>
-
-    <section class="col sec s-mechanism reveal">
-      <h3>03 .  Mechanism</h3>
-      <p>2 × 3 grid. Different combinations of raised dots represent letters, numbers, and symbols.</p>
-    </section>
-
-    <section class="col sec s-interact reveal">
-      <h3>04 .  Interaction</h3>
-    </section>
-    <div class="braille-cell reveal" aria-label="Braille cell"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="pills braille-pills reveal"><button class="pill" data-ch="A">A</button><button class="pill" data-ch="B">B</button><button class="pill" data-ch="C">C</button></div>
-
-    <section class="col sec s-connect reveal">
-      <h3>05 .  Connections</h3>
-      <p class="lbl">Explore Related Systems</p>
-      <ul class="dots">
-        <li><a href="morse.html">Morse Code</a>: Space → Time</li><li><a href="printer.html">Dot Matrix</a>: Touch → Vision</li><li><a href="qr.html">QR Code</a>: Human → Machine</li>
-      </ul>
-    </section>
-
-    <div class="refs caps reveal">
-      <h4>Reference</h4>
-      <a href="https://www.loc.gov/exhibits/louis-braille/overview.html" target="_blank" rel="noopener">Library of Congress — Louis Braille: His Legacy and Influence</a><a href="https://www.brailleauthority.org/" target="_blank" rel="noopener">Braille Authority of North America</a><a href="https://www.perkins.org/" target="_blank" rel="noopener">Perkins School for the Blind</a>
+  </div>
+  <!-- INDEX (fixed, centred on the window) -->
+  <div class="nav-layer">
+    <div class="panel left" id="indexPanel">
+      <button class="panel-tab" data-toggle="indexPanel" aria-expanded="false">
+        <span class="caps">index</span>
+        <span class="burger"><i></i><i></i><i></i></span>
+      </button>
+      <nav class="panel-body index-list caps">
+        <a href="braille.html" aria-current="page"   data-key="braille"><span>001</span><span>Braille</span></a>
+        <a href="morse.html"     data-key="morse"><span>002</span><span>Morse Code</span></a>
+        <a href="printer.html" data-key="dotmatrix"><span>003</span><span>Dot Matrix Printer</span></a>
+        <a href="punched.html"   data-key="punched"><span>004</span><span>Punched Card</span></a>
+        <a href="qr.html"        data-key="qr"><span>005</span><span>QR Code</span></a>
+      </nav>
     </div>
-
   </div>
   <script src="script.js"></script>
 </body>

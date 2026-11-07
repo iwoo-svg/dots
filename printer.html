@@ -6,7 +6,7 @@
   <title>Dot Matrix Printer — Discrete</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="system">
+<body class="system minimal">
   <div class="frame">
 
     <header class="site-header">
@@ -15,50 +15,77 @@
       <p class="count">05  Systems</p>
     </header>
 
-    <figure class="hero reveal"><img src="images/dotmatrix-hero.png" alt="Dot matrix printer"></figure>
+    <figure class="hero"><img src="images/dotmatrix-hero.png" alt="Dot matrix printer"></figure>
 
-    <div class="title-row reveal">
-      <p class="num">003</p>
-      <p class="name">Dot Matrix Printer</p>
-      <p class="meta">1960s–1970s</p>
-      <p class="tag">Constructing Letters from Dots</p>
+    <!-- minimal info block (ip-che style): one type size, numbered rows, click to open -->
+    <div class="info">
+      <div class="info-head"><span>Dot Matrix Printer</span><span>Impact Printing</span><span>1960s</span></div>
+
+      <div class="row open">
+        <button class="row-btn" aria-expanded="true"><span>01</span><span>Overview</span><span></span></button>
+        <div class="row-body">
+          <p>1960s–1970s / Impact Printing / Ink &amp; Paper</p>
+          <p>Constructing Letters from Dots. A printing technology that constructs letters and images from individual ink dots, transforming digital instructions into physical marks.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-btn static"><span>02</span><span>Category</span><span class="sub"><span>02.1</span><span>Print</span></span></div>
+      </div>
+      <div class="row">
+        <button class="row-btn" aria-expanded="false"><span>03</span><span>Origin</span><span></span></button>
+        <div class="row-body">
+          <p>Dot matrix printing emerged as computers required flexible ways to print text and graphics. Pin-based impact printers became widely used during the 1970s and 1980s, offering an alternative to printers with fixed character shapes.</p>
+        </div>
+      </div>
+      <div class="row">
+        <button class="row-btn" aria-expanded="false"><span>04</span><span>Mechanism</span><span></span></button>
+        <div class="row-body">
+          <p class="mech-sub">From Dots to Characters</p><p>A printhead uses small metal pins to strike an ink ribbon against paper. As the head moves, individual dots form letters and images within a grid, commonly using 5 × 7 or 9 × 9 character matrices.</p>
+        </div>
+      </div>
+      <div class="row">
+        <button class="row-btn" aria-expanded="false"><span>05</span><span>Interaction</span><span></span></button>
+        <div class="row-body">
+          <div class="matrix" aria-label="5 by 7 dot matrix"></div>
+    <div class="pills matrix-pills"><button class="pill" data-ch="A">A</button><button class="pill" data-ch="B">B</button><button class="pill" data-ch="C">C</button><button class="pill" data-ch="D">D</button><button class="pill" data-ch="E">E</button></div>
+        </div>
+      </div>
+      <div class="row">
+        <button class="row-btn" aria-expanded="false"><span>06</span><span>Reference</span><span></span></button>
+        <div class="row-body">
+          <ul class="plain">
+            <li><a href="https://www.britannica.com/technology/computer-printer" target="_blank" rel="noopener">Encyclopaedia Britannica — Computer Printer</a></li>
+            <li><a href="https://computerhistory.org/" target="_blank" rel="noopener">Computer History Museum</a></li>
+            <li><a href="https://www.epson.com/" target="_blank" rel="noopener">Epson — Official Website</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <section class="col sec s-overview reveal">
-      <h3>01 .  Overview</h3>
-      <p class="lead">1960s–1970s / Impact Printing / Ink &amp; Paper</p>
-      <p>A printing technology that constructs letters and images from individual ink dots, transforming digital instructions into physical marks.</p>
-    </section>
+    <!-- related systems: links to the other pages, sits at the bottom of the page -->
+    <nav class="related" aria-label="Related systems">
+      <div class="rel-head"><span>Related Systems</span></div>
+      <a class="rel-row" href="braille.html"><span>001</span><span>Braille</span><span>Touch → Vision</span></a>
+      <a class="rel-row" href="punched.html"><span>004</span><span>Punched Card</span><span>Adding Ink → Removing Material</span></a>
+      <a class="rel-row" href="qr.html"><span>005</span><span>QR Code</span><span>Human-Readable → Machine-Readable</span></a>
+    </nav>
 
-    <section class="col sec s-origin reveal">
-      <h3>02 .  Origin</h3>
-      <p>Dot matrix printing emerged as computers required flexible ways to print text and graphics. Pin-based impact printers became widely used during the 1970s and 1980s, offering an alternative to printers with fixed character shapes.</p>
-    </section>
-
-    <section class="col sec s-mechanism reveal">
-      <h3>03 .  Mechanism</h3>
-      <p class="mech-sub">From Dots to Characters</p><p>A printhead uses small metal pins to strike an ink ribbon against paper. As the head moves, individual dots form letters and images within a grid, commonly using 5 × 7 or 9 × 9 character matrices.</p>
-    </section>
-
-    <section class="col sec s-interact reveal">
-      <h3>04 .  Interaction</h3>
-    </section>
-    <div class="matrix reveal" aria-label="5 by 7 dot matrix"></div>
-    <div class="pills matrix-pills reveal"><button class="pill" data-ch="A">A</button><button class="pill" data-ch="B">B</button><button class="pill" data-ch="C">C</button></div>
-
-    <section class="col sec s-connect reveal">
-      <h3>05 .  Connections</h3>
-      <p class="lbl">Explore Related Systems</p>
-      <ul class="dots">
-        <li><a href="braille.html">Braille</a>: Touch → Vision</li><li><a href="punched.html">Punched Card</a>: Adding Ink → Removing Material</li><li><a href="qr.html">QR Code</a>: Human-Readable → Machine-Readable</li>
-      </ul>
-    </section>
-
-    <div class="refs caps reveal">
-      <h4>Reference</h4>
-      <a href="https://www.britannica.com/technology/computer-printer" target="_blank" rel="noopener">Encyclopaedia Britannica — Computer Printer</a><a href="https://computerhistory.org/" target="_blank" rel="noopener">Computer History Museum</a><a href="https://www.epson.com/" target="_blank" rel="noopener">Epson — Official Website</a>
+  </div>
+  <!-- INDEX (fixed, centred on the window) -->
+  <div class="nav-layer">
+    <div class="panel left" id="indexPanel">
+      <button class="panel-tab" data-toggle="indexPanel" aria-expanded="false">
+        <span class="caps">index</span>
+        <span class="burger"><i></i><i></i><i></i></span>
+      </button>
+      <nav class="panel-body index-list caps">
+        <a href="braille.html"   data-key="braille"><span>001</span><span>Braille</span></a>
+        <a href="morse.html"     data-key="morse"><span>002</span><span>Morse Code</span></a>
+        <a href="printer.html" aria-current="page" data-key="dotmatrix"><span>003</span><span>Dot Matrix Printer</span></a>
+        <a href="punched.html"   data-key="punched"><span>004</span><span>Punched Card</span></a>
+        <a href="qr.html"        data-key="qr"><span>005</span><span>QR Code</span></a>
+      </nav>
     </div>
-
   </div>
   <script src="script.js"></script>
 </body>
