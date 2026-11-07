@@ -16,6 +16,18 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Haas";
+  src: local("Haas Grot Disp Trial 56 Italic"), local("HaasGrotDispTrial-56Italic"),
+       local("Neue Haas Grotesk Display Pro 56 Italic"), local("NHaasGroteskDSPro-56It"),
+       url("fonts/HaasGrotDisp-56Italic.woff2") format("woff2"),
+       url("fonts/HaasGrotDisp-56Italic.woff") format("woff"),
+       url("fonts/HaasGrotDisp-56Italic.otf") format("opentype"),
+       url("fonts/HaasGrotDisp-56Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
 :root {
   --bg: #eae9e3;
   --ink: #3a3a3a;
@@ -61,7 +73,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   pointer-events: none;
 }
 .site-header > * { pointer-events: auto; }
-.site-header .logo { position: absolute; left: 0; top: 0; font-size: 36px; line-height: 43px; }
+.site-header .logo { position: absolute; left: 0; top: 0; font-size: 32px; line-height: 43px; }
+.site-header .logo i { font-style: italic; }
 .site-header .sub  { position: absolute; left: 592px; top: 10px; font-size: 14px; }
 .site-header .count{ position: absolute; right: 0; top: 10px; font-size: 14px; }
 
