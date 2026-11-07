@@ -1,11 +1,4 @@
-/* ==========================================================
-   DISCRETE — script.js
-   1. scale the 1440px frame to the window
-   2. eased (smooth) scrolling
-   3. page fade transitions + scroll reveal
-   4. landing: infinite image strip, hover background, index/about panels
-   5. detail pages: Braille / Morse / Dot matrix interactions
-   ========================================================== */
+
 (() => {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const lerp = (a, b, t) => a + (b - a) * t;
