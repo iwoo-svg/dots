@@ -75,6 +75,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .site-header > * { pointer-events: auto; }
 .site-header .logo { position: absolute; left: 0; top: 0; font-size: 32px; line-height: 43px; }
 .site-header .logo i { font-style: italic; }
+.site-header .back { position: absolute; left: 0; top: 64px; font-size: 14px; line-height: 20px; }   /* detail pages: under the logo */
+.system .site-header a.sub:hover, .system .site-header a.count:hover,
+.site-header .back:hover { text-decoration: underline; text-underline-offset: 3px; }
 .site-header .sub  { position: absolute; left: 592px; top: 10px; font-size: 14px; }
 .site-header .count{ position: absolute; right: 0; top: 10px; font-size: 14px; }
 
@@ -199,7 +202,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .system .site-header { position: fixed; top: 45px; z-index: 15; }
 .system .site-header::before {            /* page-coloured band behind the header */
   content: ""; position: absolute; z-index: -1;
-  left: -32px; top: -45px; width: 1440px; height: 115px;
+  left: -32px; top: -45px; width: 1440px; height: 150px;
   background: var(--bg);
 }
 
@@ -360,7 +363,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    MINIMAL DETAIL PAGE (ip-che style) — body.minimal
    one type size, rows on a fixed column grid, sections open on click
    ========================================================== */
-.minimal .frame { height: auto; min-height: 1024px; padding: calc(150px + var(--hero-h, 329px) - 20px) 0 0 688px; display: flex; flex-direction: column; }
+.minimal .frame { height: auto; min-height: 1024px; padding: calc(186px + var(--stage-h, 365px) + 28px) 0 0 688px; display: flex; flex-direction: column; }
 /* bigger image: 580px wide from the left margin, info block starts level with its bottom edge */
 .minimal .hero, .minimal .hero.hero-braille { left: 63px; top: 150px; width: var(--hero-w, 500px); height: var(--hero-h, 329px); }
 .info { width: 685px; font-size: 14px; line-height: 20px; }
@@ -441,6 +444,32 @@ button.row-btn:hover > span:nth-child(3) { color: var(--ink); }
 .mini-strip a { display: block; width: 32px; height: 24px; overflow: hidden; }
 .mini-strip img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1); opacity: .35; }
 .mini-strip a.current img, .mini-strip a:hover img { filter: none; opacity: 1; }
+
+/* ---------- left stage: Object / Interact ----------
+   fixed where the image was; shows the interaction first, the photo on "Object" */
+.stage { position: fixed; left: 63px; top: 186px; width: 500px; z-index: 2; }
+.minimal .stage .caps { letter-spacing: 0; text-transform: none; font-size: 14px; }
+.minimal .stage .card-grid { grid-auto-rows: 30px; }
+.minimal .stage .slot::before { inset: 7px 10px; }
+.minimal .stage .card-note { font-size: 13px; line-height: 18px; }
+.minimal .stage .morse-out { max-height: 96px; }
+.stage-tabs { display: flex; gap: 28px; height: 36px; align-items: flex-start; }
+.minimal .stage .hero, .minimal .stage .hero.hero-braille { position: relative; left: auto; top: auto; width: var(--hero-w, 500px); height: var(--hero-h, 329px); }
+.stage-inter {
+  min-height: var(--hero-h, 329px);
+  box-shadow: inset 0 0 0 1px #b8b5aa;          /* the same slot, drawn as a hairline */
+  padding: 28px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.stage[data-view="interact"] .hero { display: none; }
+.stage[data-view="object"] .stage-inter { display: none; }
+/* interactions sized to the slot */
+.minimal .stage .braille-cell { margin: 0 auto; }
+.minimal .stage .matrix { margin: 0 auto; }
+.minimal .stage .braille-pills, .minimal .stage .matrix-pills { justify-content: center; }
+.minimal .stage .morse-box, .minimal .stage .ibox, .minimal .stage .card-reader { width: 100%; }
+.minimal .stage .qr-stage { justify-content: center; }
+.minimal .stage .qr-pills { gap: 8px 22px; }
 
 /* related systems: plain links at the bottom of the page */
 .related { width: 685px; margin-top: auto; padding: 140px 0 60px; font-size: 14px; line-height: 20px; }
@@ -589,3 +618,6 @@ button.row-btn:hover > span:nth-child(3) { color: var(--ink); }
   *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* A–Z letter pickers (braille, dot matrix): 13 × 2 grid */
+.minimal .stage .braille-pills, .minimal .stage .matrix-pills { display: grid; grid-template-columns: repeat(13, 1fr); gap: 8px 0; justify-items: center; margin-top: 26px; }

@@ -174,7 +174,7 @@
   /* Braille: A / B / C changes the raised dots (1-2-3 left column, 4-5-6 right) */
   const cell = document.querySelector(".braille-cell");
   if (cell) {
-    const BRAILLE = { A: [1], B: [1, 2], C: [1, 4], D: [1, 4, 5], E: [1, 5] };
+    const BRAILLE = { A: [1], B: [1, 2], C: [1, 4], D: [1, 4, 5], E: [1, 5], F: [1, 2, 4], G: [1, 2, 4, 5], H: [1, 2, 5], I: [2, 4], J: [2, 4, 5], K: [1, 3], L: [1, 2, 3], M: [1, 3, 4], N: [1, 3, 4, 5], O: [1, 3, 5], P: [1, 2, 3, 4], Q: [1, 2, 3, 4, 5], R: [1, 2, 3, 5], S: [2, 3, 4], T: [2, 3, 4, 5], U: [1, 3, 6], V: [1, 2, 3, 6], W: [2, 4, 5, 6], X: [1, 3, 4, 6], Y: [1, 3, 4, 5, 6], Z: [1, 3, 5, 6] };
     const dots = [...cell.children];
     const pills = document.querySelectorAll(".braille-pills .pill");
     const set = ch => {
@@ -182,6 +182,7 @@
       pills.forEach(p => p.classList.toggle("on", p.dataset.ch === ch));
     };
     pills.forEach(p => p.addEventListener("click", () => set(p.dataset.ch)));
+    addEventListener("keydown", e => { const k = e.key.toUpperCase(); if (!e.metaKey && !e.ctrlKey && BRAILLE[k] && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) set(k); });
     set("A");
   }
 
@@ -194,6 +195,27 @@
       C: [".###.", "#...#", "#....", "#....", "#....", "#...#", ".###."],
       D: ["####.", "#...#", "#...#", "#...#", "#...#", "#...#", "####."],
       E: ["#####", "#....", "#....", "####.", "#....", "#....", "#####"],
+      F: ["#####", "#....", "#....", "####.", "#....", "#....", "#...."],
+      G: [".###.", "#...#", "#....", "#.###", "#...#", "#...#", ".###."],
+      H: ["#...#", "#...#", "#...#", "#####", "#...#", "#...#", "#...#"],
+      I: [".###.", "..#..", "..#..", "..#..", "..#..", "..#..", ".###."],
+      J: ["..###", "...#.", "...#.", "...#.", "...#.", "#..#.", ".##.."],
+      K: ["#...#", "#..#.", "#.#..", "##...", "#.#..", "#..#.", "#...#"],
+      L: ["#....", "#....", "#....", "#....", "#....", "#....", "#####"],
+      M: ["#...#", "##.##", "#.#.#", "#.#.#", "#...#", "#...#", "#...#"],
+      N: ["#...#", "#...#", "##..#", "#.#.#", "#..##", "#...#", "#...#"],
+      O: [".###.", "#...#", "#...#", "#...#", "#...#", "#...#", ".###."],
+      P: ["####.", "#...#", "#...#", "####.", "#....", "#....", "#...."],
+      Q: [".###.", "#...#", "#...#", "#...#", "#.#.#", "#..#.", ".##.#"],
+      R: ["####.", "#...#", "#...#", "####.", "#.#..", "#..#.", "#...#"],
+      S: [".####", "#....", "#....", ".###.", "....#", "....#", "####."],
+      T: ["#####", "..#..", "..#..", "..#..", "..#..", "..#..", "..#.."],
+      U: ["#...#", "#...#", "#...#", "#...#", "#...#", "#...#", ".###."],
+      V: ["#...#", "#...#", "#...#", "#...#", "#...#", ".#.#.", "..#.."],
+      W: ["#...#", "#...#", "#...#", "#.#.#", "#.#.#", "#.#.#", ".#.#."],
+      X: ["#...#", "#...#", ".#.#.", "..#..", ".#.#.", "#...#", "#...#"],
+      Y: ["#...#", "#...#", ".#.#.", "..#..", "..#..", "..#..", "..#.."],
+      Z: ["#####", "....#", "...#.", "..#..", ".#...", "#....", "#####"],
     };
     for (let i = 0; i < 35; i++) matrix.appendChild(document.createElement("i"));
     const cells = [...matrix.children];
@@ -216,6 +238,7 @@
       }
     };
     pills.forEach(p => p.addEventListener("click", () => print(p.dataset.ch)));
+    addEventListener("keydown", e => { const k = e.key.toUpperCase(); if (!e.metaKey && !e.ctrlKey && GLYPHS[k] && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) print(k); });
     // print the first letter when the grid scrolls into view
     new IntersectionObserver((en, obs) => {
       if (en[0].isIntersecting) { print("A"); obs.disconnect(); }
@@ -450,5 +473,15 @@
       });
       a.addEventListener("mouseleave", () => hero.classList.remove("previewing"));
     });
+  }
+
+  /* left stage: switch between the interaction and the object photo */
+  const stage = document.querySelector(".stage");
+  if (stage) {
+    const tabs = stage.querySelectorAll(".stage-tabs .pill");
+    tabs.forEach(t => t.addEventListener("click", () => {
+      stage.dataset.view = t.dataset.view;
+      tabs.forEach(x => x.classList.toggle("on", x === t));
+    }));
   }
 })();

@@ -6,16 +6,36 @@
   <title>Punched Card — Discrete</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="system minimal" style="--hero-w: 400px; --hero-h: 400px">
+<body class="system minimal" style="--hero-w: 400px; --hero-h: 400px; --stage-h: 491px">
   <div class="frame">
 
     <header class="site-header">
       <a class="logo" href="index.html">Di    <i>scr</i>     ete</a>
-      <p class="sub">Archive  of  Encoded  Information</p>
-      <p class="count">05  Systems</p>
+      <a class="sub" href="index.html">Archive  of  Encoded  Information</a>
+      <a class="count" href="index.html">005  Systems</a>
+      <a class="back" href="index.html">← All systems</a>
     </header>
 
-    <figure class="hero square"><img src="images/punched-hero.png" alt="Punched cards"></figure>
+    <!-- left slot: the interaction by default, the object photo on "Object" -->
+    <div class="stage" data-view="interact">
+      <div class="stage-tabs"><button class="pill" data-view="object">Object</button><button class="pill on" data-view="interact">Interact</button></div>
+      <figure class="hero square"><img src="images/punched-hero.png" alt="Punched cards"></figure>
+      <div class="stage-inter">
+          <div class="ibox card-box">
+      <div class="ihead caps"><span>Punched Card / Simulation</span><button class="pill card-clear">Clear</button></div>
+      <div class="card-reader">
+        <div class="card">
+          <div class="card-top"><span>Discrete / Card 004</span><span>Hole / No Hole</span></div>
+          <div class="card-grid"></div>
+          <div class="card-bottom"></div>
+        </div>
+      </div>
+      <div class="card-read" aria-live="polite"></div>
+      <div class="card-stats caps"><span>Punched Positions</span><span class="card-count"></span></div>
+      <p class="card-note">Conceptual simulation of positional encoding, not a historical punched-card format. Each column reads as a 6-bit number: 1 = A … 26 = Z.</p>
+    </div>
+      </div>
+    </div>
 
     <!-- minimal info block (ip-che style): one type size, numbered rows, click to open -->
     <div class="info">
@@ -44,25 +64,7 @@
         </div>
       </div>
       <div class="row">
-        <button class="row-btn" aria-expanded="false"><span>05</span><span>Interaction</span><span></span></button>
-        <div class="row-body">
-          <div class="ibox card-box">
-      <div class="ihead caps"><span>Punched Card / Simulation</span><button class="pill card-clear">Clear</button></div>
-      <div class="card-reader">
-        <div class="card">
-          <div class="card-top"><span>Discrete / Card 004</span><span>Hole / No Hole</span></div>
-          <div class="card-grid"></div>
-          <div class="card-bottom"></div>
-        </div>
-      </div>
-      <div class="card-read" aria-live="polite"></div>
-      <div class="card-stats caps"><span>Punched Positions</span><span class="card-count"></span></div>
-      <p class="card-note">Conceptual simulation of positional encoding, not a historical punched-card format. Each column reads as a 6-bit number: 1 = A … 26 = Z.</p>
-    </div>
-        </div>
-      </div>
-      <div class="row">
-        <button class="row-btn" aria-expanded="false"><span>06</span><span>Reference</span><span></span></button>
+        <button class="row-btn" aria-expanded="false"><span>05</span><span>Reference</span><span></span></button>
         <div class="row-body">
           <ul class="plain">
             <li><a href="https://www.britannica.com/technology/Jacquard-loom" target="_blank" rel="noopener">Encyclopaedia Britannica — Jacquard Loom</a></li>
@@ -79,7 +81,6 @@
       <a class="rel-row" href="printer.html"><span>003</span><span>Dot Matrix</span><span>Adding Ink → Removing Material</span></a>
       <a class="rel-row" href="qr.html"><span>005</span><span>QR Code</span><span>Mechanical Reading → Optical Scanning</span></a>
       <a class="rel-row" href="braille.html"><span>001</span><span>Braille</span><span>Raised Dots → Punched Holes</span></a>
-      <a class="rel-back" href="index.html">← All systems</a>
     </nav>
 
   </div>

@@ -6,16 +6,29 @@
   <title>Morse Code — Discrete</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="system minimal">
+<body class="system minimal" style="--stage-h: 400px">
   <div class="frame">
 
     <header class="site-header">
       <a class="logo" href="index.html">Di    <i>scr</i>     ete</a>
-      <p class="sub">Archive  of  Encoded  Information</p>
-      <p class="count">05  Systems</p>
+      <a class="sub" href="index.html">Archive  of  Encoded  Information</a>
+      <a class="count" href="index.html">005  Systems</a>
+      <a class="back" href="index.html">← All systems</a>
     </header>
 
-    <figure class="hero"><img src="images/morse-hero.png" alt="Morse telegraph key"></figure>
+    <!-- left slot: the interaction by default, the object photo on "Object" -->
+    <div class="stage" data-view="interact">
+      <div class="stage-tabs"><button class="pill" data-view="object">Object</button><button class="pill on" data-view="interact">Interact</button></div>
+      <figure class="hero"><img src="images/morse-hero.png" alt="Morse telegraph key"></figure>
+      <div class="stage-inter">
+          <div class="morse-box">
+      <label class="caps" for="morseIn">Message input</label>
+      <input id="morseIn" type="text" maxlength="60" autocomplete="off" spellcheck="false">
+      <p class="out-lbl caps">Morse output</p>
+      <div class="morse-out" id="morseOut" aria-live="polite"></div>
+    </div>
+      </div>
+    </div>
 
     <!-- minimal info block (ip-che style): one type size, numbered rows, click to open -->
     <div class="info">
@@ -44,18 +57,7 @@
         </div>
       </div>
       <div class="row">
-        <button class="row-btn" aria-expanded="false"><span>05</span><span>Interaction</span><span></span></button>
-        <div class="row-body">
-          <div class="morse-box">
-      <label class="caps" for="morseIn">Message input</label>
-      <input id="morseIn" type="text" maxlength="60" autocomplete="off" spellcheck="false">
-      <p class="out-lbl caps">Morse output</p>
-      <div class="morse-out" id="morseOut" aria-live="polite"></div>
-    </div>
-        </div>
-      </div>
-      <div class="row">
-        <button class="row-btn" aria-expanded="false"><span>06</span><span>Reference</span><span></span></button>
+        <button class="row-btn" aria-expanded="false"><span>05</span><span>Reference</span><span></span></button>
         <div class="row-body">
           <ul class="plain">
             <li><a href="https://www.britannica.com/topic/Morse-Code" target="_blank" rel="noopener">Encyclopaedia Britannica — Morse Code</a></li>
@@ -72,7 +74,6 @@
       <a class="rel-row" href="braille.html"><span>001</span><span>Braille</span><span>Time → Space</span></a>
       <a class="rel-row" href="printer.html"><span>003</span><span>Dot Matrix</span><span>Signal → Physical Mark</span></a>
       <a class="rel-row" href="punched.html"><span>004</span><span>Punched Card</span><span>Sequence → Position</span></a>
-      <a class="rel-back" href="index.html">← All systems</a>
     </nav>
 
   </div>

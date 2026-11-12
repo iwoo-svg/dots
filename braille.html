@@ -6,16 +6,25 @@
   <title>Braille — Discrete</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="system minimal" style="--hero-h: 356px">
+<body class="system minimal" style="--hero-h: 356px; --stage-h: 392px">
   <div class="frame">
 
     <header class="site-header">
       <a class="logo" href="index.html">Di    <i>scr</i>     ete</a>
-      <p class="sub">Archive  of  Encoded  Information</p>
-      <p class="count">05  Systems</p>
+      <a class="sub" href="index.html">Archive  of  Encoded  Information</a>
+      <a class="count" href="index.html">005  Systems</a>
+      <a class="back" href="index.html">← All systems</a>
     </header>
 
-    <figure class="hero hero-braille"><img src="images/braille-1.png" alt="Braille"></figure>
+    <!-- left slot: the interaction by default, the object photo on "Object" -->
+    <div class="stage" data-view="interact">
+      <div class="stage-tabs"><button class="pill" data-view="object">Object</button><button class="pill on" data-view="interact">Interact</button></div>
+      <figure class="hero hero-braille"><img src="images/braille-1.png" alt="Braille"></figure>
+      <div class="stage-inter">
+          <div class="braille-cell" aria-label="Braille cell"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="pills braille-pills"><button class="pill" data-ch="A">A</button><button class="pill" data-ch="B">B</button><button class="pill" data-ch="C">C</button><button class="pill" data-ch="D">D</button><button class="pill" data-ch="E">E</button><button class="pill" data-ch="F">F</button><button class="pill" data-ch="G">G</button><button class="pill" data-ch="H">H</button><button class="pill" data-ch="I">I</button><button class="pill" data-ch="J">J</button><button class="pill" data-ch="K">K</button><button class="pill" data-ch="L">L</button><button class="pill" data-ch="M">M</button><button class="pill" data-ch="N">N</button><button class="pill" data-ch="O">O</button><button class="pill" data-ch="P">P</button><button class="pill" data-ch="Q">Q</button><button class="pill" data-ch="R">R</button><button class="pill" data-ch="S">S</button><button class="pill" data-ch="T">T</button><button class="pill" data-ch="U">U</button><button class="pill" data-ch="V">V</button><button class="pill" data-ch="W">W</button><button class="pill" data-ch="X">X</button><button class="pill" data-ch="Y">Y</button><button class="pill" data-ch="Z">Z</button></div>
+      </div>
+    </div>
 
     
 
@@ -49,16 +58,9 @@
         </div>
       </div>
 
-      <div class="row">
-        <button class="row-btn" aria-expanded="false"><span>05</span><span>Interaction</span><span></span></button>
-        <div class="row-body">
-          <div class="braille-cell" aria-label="Braille cell"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          <div class="pills braille-pills"><button class="pill" data-ch="A">A</button><button class="pill" data-ch="B">B</button><button class="pill" data-ch="C">C</button><button class="pill" data-ch="D">D</button><button class="pill" data-ch="E">E</button></div>
-        </div>
-      </div>
 
       <div class="row">
-        <button class="row-btn" aria-expanded="false"><span>06</span><span>Reference</span><span></span></button>
+        <button class="row-btn" aria-expanded="false"><span>05</span><span>Reference</span><span></span></button>
         <div class="row-body">
           <ul class="plain">
             <li><a href="https://www.loc.gov/exhibits/louis-braille/overview.html" target="_blank" rel="noopener">Library of Congress — Louis Braille: His Legacy and Influence</a></li>
@@ -75,7 +77,6 @@
       <a class="rel-row" href="morse.html"><span>002</span><span>Morse Code</span><span>Space → Time</span></a>
       <a class="rel-row" href="printer.html"><span>003</span><span>Dot Matrix</span><span>Touch → Vision</span></a>
       <a class="rel-row" href="qr.html"><span>005</span><span>QR Code</span><span>Human → Machine</span></a>
-      <a class="rel-back" href="index.html">← All systems</a>
     </nav>
 
   </div>
